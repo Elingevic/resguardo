@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Resguardo — Propuesta de innovación · AseguraTech26</title>
+<style>
+  @font-face { font-family: Geist; src: url(geist.woff2) format("woff2"); font-weight: 100 900; }
+  @font-face { font-family: GeistMono; src: url(geist-mono.woff2) format("woff2"); font-weight: 100 900; }
+  @page { size: 210mm 297mm; margin: 0; }
+  :root { --r50: #f5f3ff; --r100: #ede9fe; --r200: #ddd6fe; --r400: #a78bfa; --r500: #7c3aed; --r600: #6d28d9; --r700: #5b21b6; --t950: #020617; --t900: #0f172a; --t700: #334155; --t500: #64748b; --t200: #e2e8f0; --t100: #f1f5f9; --verde: #16a34a; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Geist, sans-serif; color: var(--t900); font-size: 10pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pagina { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; padding: 18mm 17mm 20mm; background: #fff; }
+  .pagina:last-child { page-break-after: auto; }
+  .pie { position: absolute; left: 17mm; right: 17mm; bottom: 9mm; display: flex; justify-content: space-between; font-size: 7.5pt; color: #94a3b8; border-top: 0.3mm solid var(--t200); padding-top: 2.5mm; }
+  .seccion { font-size: 8pt; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; color: var(--r600); }
+  h1 { font-size: 24pt; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--t950); margin: 2mm 0 5mm; }
+  h2 { font-size: 13pt; font-weight: 750; letter-spacing: -0.015em; color: var(--t950); margin: 6mm 0 2mm; }
+  h3 { font-size: 10.5pt; font-weight: 700; color: var(--t950); margin-bottom: 1mm; }
+  p { color: #334155; margin-bottom: 2.5mm; }
+  p b, li b, td b { color: var(--t950); }
+  .intro { font-size: 11.5pt; line-height: 1.5; color: #1e293b; }
+  ul { list-style: none; margin-bottom: 3mm; }
+  li { position: relative; padding-left: 4.5mm; margin-top: 1.4mm; color: #334155; }
+  li::before { content: ""; position: absolute; left: 0; top: 2mm; width: 1.8mm; height: 1.8mm; border-radius: 50%; background: var(--r500); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
+  .tarjeta { border: 0.3mm solid var(--t200); border-radius: 3.5mm; padding: 4.5mm 5mm; background: #f8fafc; }
+  .tarjeta .ic { font-size: 17pt; line-height: 1; margin-bottom: 2mm; }
+  .tarjeta .dato { font-size: 15pt; font-weight: 800; letter-spacing: -0.03em; color: var(--r600); line-height: 1.05; margin-bottom: 1.5mm; }
+  .fuente { font-size: 7.5pt; color: var(--t500); margin-top: 1.5mm; }
+  .destacado { background: var(--r50); border: 0.3mm solid var(--r100); border-radius: 3.5mm; padding: 4.5mm 5.5mm; margin: 4mm 0; }
+  .destacado.verde { background: #f0fdf4; border-color: #bbf7d0; }
+  figure { border: 0.3mm solid var(--t200); border-radius: 3mm; overflow: hidden; background: #f5f7fa; }
+  figure img { display: block; width: 100%; }
+  figcaption { font-size: 8pt; color: var(--t500); padding: 2mm 3mm; background: #fff; border-top: 0.3mm solid var(--t200); }
+  figcaption b { color: var(--t950); }
+  .tel { text-align: center; }
+  .tel img { width: 100%; border-radius: 7mm; border: 2.2mm solid var(--t950); display: block; }
+  .tel p { font-size: 8.5pt; margin-top: 2.5mm; color: var(--t700); text-align: left; }
+  .paso { display: flex; gap: 3mm; align-items: baseline; }
+  .num { flex: 0 0 auto; width: 7mm; height: 7mm; border-radius: 50%; background: var(--t900); color: #fff; font-weight: 750; font-size: 9pt; display: inline-flex; align-items: center; justify-content: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.8pt; margin: 2mm 0 3mm; }
+  th { text-align: left; font-size: 7.5pt; letter-spacing: 0.05em; text-transform: uppercase; color: var(--t500); background: var(--t100); padding: 2mm 2.5mm; border-bottom: 0.3mm solid var(--t200); }
+  td { padding: 1.8mm 2.5mm; border-bottom: 0.3mm solid #eef2f7; color: #334155; vertical-align: top; }
+  td.cod { font-family: GeistMono, monospace; text-align: center; color: var(--t950); font-weight: 600; }
+  .mono { font-family: GeistMono, monospace; }
+  .tl { position: relative; padding-left: 7mm; }
+  .tl::before { content: ""; position: absolute; left: 2.2mm; top: 2mm; bottom: 2mm; width: 0.5mm; background: var(--r200); }
+  .tl .it { position: relative; margin-bottom: 3mm; }
+  .tl .it::before { content: ""; position: absolute; left: -6.3mm; top: 1.2mm; width: 3mm; height: 3mm; border-radius: 50%; background: var(--r500); }
+  .tl .h { font-family: GeistMono, monospace; font-size: 8pt; color: var(--r600); }
+
+  .portada { background: radial-gradient(150mm 110mm at 85% 15%, rgba(124,58,237,.5) 0%, transparent 65%), linear-gradient(160deg, #020617 0%, #0f172a 60%, #1e293b 100%); color: #fff; padding: 24mm 20mm; display: flex; flex-direction: column; }
+  .portada .logo { font-size: 66pt; font-weight: 800; letter-spacing: -0.045em; line-height: 1; margin-top: 30mm; }
+  .portada .logo b { color: var(--r400); }
+  .portada .lema { font-size: 21pt; font-weight: 700; line-height: 1.2; margin-top: 8mm; letter-spacing: -0.02em; }
+  .portada .lema span { color: var(--r400); }
+  .portada .sub { font-size: 12pt; color: #cbd5e1; margin-top: 6mm; line-height: 1.5; max-width: 155mm; }
+  .portada .datos { margin-top: auto; font-size: 10pt; color: #cbd5e1; line-height: 1.7; }
+  .portada .datos b { color: #fff; }
+  .portada .vista { margin-top: 12mm; border-radius: 4mm; overflow: hidden; border: 0.4mm solid rgba(255,255,255,.15); width: 150mm; }
+  .portada .vista img { width: 100%; display: block; }
+  .chip { display: inline-block; align-self: flex-start; padding: 1.5mm 4mm; border-radius: 99px; background: rgba(255,255,255,0.1); border: 0.3mm solid rgba(255,255,255,0.22); font-size: 9pt; color: #fff; }
+</style>
+</head>
+<body>
+<section class="pagina portada">
+  <span class="chip">AseguraTech26 · Pitch de innovación</span>
+  <div class="logo">Resguard<b>o</b></div>
+  <div class="lema">Si la tierra tiembla o el agua sube,<br><span>te pagamos sin que lo pidas.</span></div>
+  <p class="sub">Un microseguro paramétrico de terremoto y lluvia extrema para hogares y pequeños negocios: cuando los datos confirman el evento en tu zona, el dinero llega por Pago Móvil, sin reclamo ni perito.</p>
+  <div class="vista"><img src="img/landing.jpg" alt=""></div>
+  <div class="datos">
+    <b>Desafío 1:</b> Seguros paramétricos y resiliencia<br>
+    <b>Desafío 2:</b> Seguros inclusivos, microseguros y masivos<br>
+    <b>Etapa:</b> pre-semilla, con prototipo funcional en línea<br>
+    <b>Prototipo:</b> resguardove.vercel.app<br>
+    Noviembre de 2026
+  </div>
+</section>
+
+<section class="pagina">
+  <div class="seccion">Resumen ejecutivo</div>
+  <h1>El dinero llega antes que los papeles</h1>
+  <p class="intro">El doble terremoto del 24 de junio de 2026 y las lluvias de agosto mostraron que casi nadie en Venezuela tiene protección, y que el seguro tradicional llega tarde: peritos, inventarios y meses de trámites. <b>Resguardo</b> es un <b>microseguro paramétrico</b>: desde <b>$1,20 al mes</b>, paga un <b>monto fijo de hasta $800</b> cuando un dato objetivo (intensidad sísmica o lluvia acumulada) pasa un umbral en la zona del asegurado. <b>Sin reclamo, sin perito, por Pago Móvil.</b></p>
+  <div class="cols3" style="margin:4mm 0">
+    <div class="tarjeta"><div class="ic">🏠</div><h3>Para las familias</h3><p style="margin:0">Dinero inmediato para lo urgente, por lo que cuesta un pasaje al mes.</p></div>
+    <div class="tarjeta"><div class="ic">🏢</div><h3>Para las aseguradoras</h3><p style="margin:0">Un producto masivo sin costo de peritaje, con el riesgo catastrófico en el reaseguro.</p></div>
+    <div class="tarjeta"><div class="ic">🤝</div><h3>Para los canales</h3><p style="margin:0">Bancos, cooperativas y condominios protegen a su gente con un producto simple.</p></div>
+  </div>
+  <div class="seccion" style="margin-top:5mm">El problema</div>
+  <h1 style="font-size:19pt">Los desastres llegan en segundos. La ayuda tarda meses.</h1>
+  <div class="cols" style="gap:4mm">
+    <div class="tarjeta"><div class="dato">6.509 fallecidos</div><p style="margin:0">dejó el doble terremoto de magnitud 7,2 y 7,5 del 24 de junio, según el balance oficial a dos meses.</p><div class="fuente">Teleamazonas / balance oficial, agosto 2026</div></div>
+    <div class="tarjeta"><div class="dato">$37.000 millones</div><p style="margin:0">en daños estimados, según la adenda al Plan de Respuesta Humanitaria de la ONU.</p><div class="fuente">OCHA, 2026</div></div>
+    <div class="tarjeta"><div class="dato">&lt; 3 % asegurado</div><p style="margin:0">de las edificaciones tiene una póliza, y apenas 6 % de los venezolanos tiene algún seguro.</p><div class="fuente">El Diario; La Patilla, julio 2026</div></div>
+    <div class="tarjeta"><div class="dato">Lluvias sin tregua</div><p style="margin:0">En agosto, una onda tropical dejó desaparecidos y más de 150 viviendas afectadas en Caracas y dos estados.</p><div class="fuente">EFE vía Primicias, agosto 2026</div></div>
+  </div>
+  <div class="pie"><span>Resguardo · AseguraTech26</span><span>2</span></div>
+</section>
+
+<section class="pagina">
+  <div class="seccion">La solución</div>
+  <h1>Un seguro que se activa con datos, no con trámites</h1>
+  <p class="intro">En un seguro paramétrico, el pago no depende de un perito sino de un <b>índice objetivo</b> medido en la zona. Si el índice pasa el umbral, todos los asegurados de esa zona reciben el monto acordado.</p>
+  <h2>Cómo funciona</h2>
+  <div class="paso"><span class="num">1</span><p><b>Se contrata en un canal de confianza:</b> app del banco, cooperativa, microfinanciera o junta de condominio, desde $1,20 al mes.</p></div>
+  <div class="paso"><span class="num">2</span><p><b>Vigila los datos:</b> sismos con el mapa de sacudida del USGS contrastado con FUNVISIS; lluvia con el satélite NASA GPM contrastado con el INAMEH.</p></div>
+  <div class="paso"><span class="num">3</span><p><b>Se activa solo:</b> si la zona pasa el umbral, se calcula el lote de pagos de todos los asegurados afectados.</p></div>
+  <div class="paso"><span class="num">4</span><p><b>Paga por Pago Móvil:</b> monto fijo según el tramo alcanzado, con un objetivo de 48 horas.</p></div>
+  <h2>Tabla de pagos (referencial)</h2>
+  <table>
+    <tr><th>Evento</th><th>Umbral en la zona</th><th style="text-align:center">Básico $1,20/mes</th><th style="text-align:center">Hogar $2,50/mes</th></tr>
+    <tr><td><b>Sismo</b></td><td>Intensidad VI</td><td class="cod">$75</td><td class="cod">$150</td></tr>
+    <tr><td><b>Sismo</b></td><td>Intensidad VII</td><td class="cod">$200</td><td class="cod">$400</td></tr>
+    <tr><td><b>Sismo</b></td><td>Intensidad VIII o más</td><td class="cod">$400</td><td class="cod">$800</td></tr>
+    <tr><td><b>Lluvia</b></td><td>100 mm o más en 24 h</td><td class="cod">$50</td><td class="cod">$100</td></tr>
+    <tr><td><b>Lluvia</b></td><td>150 mm o más en 24 h</td><td class="cod">$125</td><td class="cod">$250</td></tr>
+  </table>
+  <div class="destacado"><b>Riesgo base, explicado antes de contratar.</b> El pago depende del dato de la zona, no del daño de cada casa: puede haber daño sin pago y pago sin daño. Resguardo lo muestra con la tabla y la consulta "Mi zona", y complementa al seguro tradicional, no lo reemplaza.</div>
+  <div class="pie"><span>Resguardo · AseguraTech26</span><span>3</span></div>
+</section>
+
+<section class="pagina">
+  <div class="seccion">Recorrido · Asegurado</div>
+  <h1>José no tuvo que reclamar nada</h1>
+  <p class="intro">José vive en Catia La Mar y tiene el plan Hogar. Cuando tiembla, su teléfono le avisa cuánto recibe y el dinero llega solo.</p>
+  <div class="cols3" style="margin-top:5mm;gap:6mm">
+    <div class="tel"><img src="img/tel-inicio.png" alt=""><p><b>Resguardado.</b> Plan, monto máximo por evento y la zona vigilada día y noche.</p></div>
+    <div class="tel"><img src="img/tel-alerta.png" alt=""><p><b>Se activó.</b> Intensidad VIII en su zona: le corresponden $800, sin demostrar daños.</p></div>
+    <div class="tel"><img src="img/tel-pagado.png" alt=""><p><b>Pagado.</b> Evento detectado, verificado con 2 fuentes y Pago Móvil recibido.</p></div>
+  </div>
+  <div class="pie"><span>Resguardo · AseguraTech26</span><span>4</span></div>
+</section>
+
+<section class="pagina">
+  <div class="seccion">Recorrido · Aseguradora</div>
+  <h1>Del sismo al lote de pagos en horas</h1>
+  <p class="intro">El monitor muestra qué zonas pasaron el umbral, cuántos asegurados hay en cada una y cuánto hay que pagar. La aseguradora libera el lote y el reaseguro cubre lo que excede su retención.</p>
+  <figure style="margin-top:3mm"><img src="img/mon-kpis.png" alt=""><figcaption><b>Indicadores:</b> asegurados, prima, exposición máxima y monto a pagar del evento (cifras ilustrativas).</figcaption></figure>
+  <div class="cols" style="margin-top:5mm;align-items:start;grid-template-columns:1.55fr 1fr">
+    <figure><img src="img/mon-mapa.png" alt=""><figcaption><b>Escenario de sismo:</b> zonas por tramo de pago alrededor del epicentro (intensidades ilustrativas).</figcaption></figure>
+    <figure><img src="img/mon-lote.png" alt=""><figcaption><b>Lote de pagos:</b> retención de la aseguradora y parte del reaseguro.</figcaption></figure>
+  </div>
+  <div class="pie"><span>Resguardo · AseguraTech26</span><span>5</span></div>
+</section>
+
+<section class="pagina">
+  <div class="seccion">Recorrido · Zonas y lluvias</div>
+  <h1>Transparente para todos</h1>
+  <p class="intro">Cada zona tiene su dato, su tramo y su monto. Y cualquier persona puede consultar cuánto le pagaría Resguardo en su municipio antes de contratar.</p>
+  <div class="cols" style="margin-top:3mm;align-items:start;grid-template-columns:1.25fr 1fr">
+    <figure><img src="img/mon-tabla.png" alt=""><figcaption><b>Zonas y pagos del evento:</b> intensidad, tramo, asegurados y monto por zona.</figcaption></figure>
+    <figure><img src="img/zona.png" alt=""><figcaption><b>Mi zona:</b> cuánto pagaría cada plan en cada escenario.</figcaption></figure>
+  </div>
+  <figure style="margin-top:5mm"><img src="img/mon-mapa-lluvia.png" alt=""><figcaption><b>Escenario de lluvia</b> por onda tropical en Caracas (valores ilustrativos).</figcaption></figure>
+  <div class="pie"><span>Resguardo · AseguraTech26</span><span>6</span></div>
+</section>
+
+<section class="pagina">
+  <div class="seccion">Viabilidad</div>
+  <h1>Construido para el mercado venezolano</h1>
+  <h2>Intermediación y riesgo</h2>
+  <ul>
+    <li><b>Resguardo no asume riesgo ni intermedia.</b> El riesgo es de una aseguradora autorizada por la SUDEASEG, la colocación la hace un intermediario autorizado y el riesgo catastrófico se transfiere al <b>reaseguro internacional</b> con el mismo índice.</li>
+    <li><b>Póliza colectiva con monto fijo por evento,</b> por canal (banco, cooperativa, condominio).</li>
+    <li><b>Marco paramétrico:</b> Venezuela no tiene una norma específica. Proponemos un <b>piloto supervisado</b>, con referencia al reglamento de seguros paramétricos que aprobó la SBS del Perú en septiembre de 2026.</li>
+    <li><b>Transparencia:</b> índice y fuentes publicados; cualquiera puede verificar por qué se pagó o no.</li>
+    <li><b>Datos personales mínimos:</b> solo la zona y la cuenta de pago.</li>
+  </ul>
+  <h2>La región ya lo hace</h2>
+  <div class="cols">
+    <div class="tarjeta"><h3>MiCRO (Howden)</h3><p style="margin:0">Microseguros paramétricos de lluvia, inundación, sequía y terremoto en seis países de América Latina, con 690.000 asegurados y pagos automáticos sin reclamo.</p></div>
+    <div class="tarjeta"><h3>Perú, 2026</h3><p style="margin:0">La SBS reguló los seguros paramétricos, que activan pagos automáticos ante terremotos, tsunamis y lluvias.</p></div>
+  </div>
+  <h2>Aplicabilidad en Venezuela</h2>
+  <ul>
+    <li>Responde a los riesgos que el país acaba de vivir: sismos y lluvias extremas.</li>
+    <li>Usa datos que ya existen (FUNVISIS, INAMEH, USGS, NASA) y el pago digital masivo (Pago Móvil).</li>
+    <li>Precio de microseguro, accesible para hogares de bajos ingresos y pequeños negocios.</li>
+  </ul>
+  <div class="pie"><span>Resguardo · AseguraTech26</span><span>7</span></div>
+</section>
+
+<section class="pagina">
+  <div class="seccion">Modelo de negocio</div>
+  <h1>Cómo crece Resguardo</h1>
+  <table>
+    <tr><th style="width:32%">Fuente de ingresos</th><th>Descripción</th></tr>
+    <tr><td><b>Comisión tecnológica</b></td><td>Porcentaje de la prima por operar el monitoreo, el cálculo de lotes y los pagos.</td></tr>
+    <tr><td><b>Licencia del índice</b></td><td>Venta del índice y del motor de cálculo a aseguradoras y reaseguradores.</td></tr>
+    <tr><td><b>Programas colectivos</b></td><td>Pólizas para alcaldías, gremios o empresas que protegen a su comunidad o a sus trabajadores.</td></tr>
+  </table>
+  <div class="destacado"><b>Por qué es sostenible:</b> sin peritos ni reclamos, el costo de gestionar cada siniestro cae casi a cero. En la demo, el escenario de sismo pagaría unos $26 millones a 56.800 asegurados: la aseguradora retiene $1,5 millones y el resto lo cubre el reaseguro (cifras ilustrativas).</div>
+  <h2>Hoja de ruta</h2>
+  <table>
+    <tr><th style="width:22%">Fase</th><th>Qué</th></tr>
+    <tr><td><b>Hoy</b></td><td>Prototipo en línea: app del asegurado, monitor de la aseguradora y consulta por zona.</td></tr>
+    <tr><td><b>0–3 meses</b></td><td>Acuerdos de datos con FUNVISIS e INAMEH; tarifa con una aseguradora y un reasegurador.</td></tr>
+    <tr><td><b>3–6 meses</b></td><td>Piloto supervisado en La Guaira y Caracas con un canal aliado.</td></tr>
+    <tr><td><b>6–12 meses</b></td><td>Más zonas y canales; plan para pequeños negocios (pérdida de ingresos).</td></tr>
+    <tr><td><b>12+ meses</b></td><td>Programas con alcaldías y gremios; nuevos riesgos como la sequía para productores.</td></tr>
+  </table>
+  <h2>Métricas del piloto</h2>
+  <ul>
+    <li>Asegurados por zona y canal; renovación a 12 meses</li>
+    <li>Tiempo del evento al pago</li>
+    <li>Riesgo base observado y comprensión del producto (encuesta)</li>
+  </ul>
+  <div class="pie"><span>Resguardo · AseguraTech26</span><span>8</span></div>
+</section>
+
+<section class="pagina">
+  <div class="seccion">Estado actual</div>
+  <h1>Un prototipo que ya se puede probar</h1>
+  <p class="intro">El prototipo está en línea en <b>resguardove.vercel.app</b>. Un mismo evento simulado aparece en la app del asegurado y en el monitor de la aseguradora.</p>
+  <h2>Qué está construido</h2>
+  <table>
+    <tr><th style="width:26%">Vista</th><th>Funcionalidades</th></tr>
+    <tr><td><b>Asegurado</b></td><td>Estado de la cobertura, simulación de sismo y lluvia, aviso automático con el monto, seguimiento del pago, tabla de pagos, cambio de plan e historial.</td></tr>
+    <tr><td><b>Aseguradora</b></td><td>Mapa esquemático de zonas, dato por zona, tramos, asegurados afectados, lote de pagos, retención y reaseguro.</td></tr>
+    <tr><td><b>Mi zona</b></td><td>Consulta por municipio de cuánto pagaría cada plan en cada escenario.</td></tr>
+  </table>
+  <div class="destacado">Personas, aseguradoras, montos, umbrales e intensidades del prototipo son <b>ficticios o ilustrativos</b>. La tarifa real debe calcularse con un modelo de riesgo y el reasegurador.</div>
+  <h2>Fuentes</h2>
+  <ul style="font-size:8.6pt">
+    <li>Doble terremoto del 24 de junio de 2026 y balance de fallecidos: Teleamazonas (agosto de 2026).</li>
+    <li>Daños estimados en $37.000 millones: OCHA, adenda al Plan de Respuesta Humanitaria 2026.</li>
+    <li>Menos del 3 % de edificaciones aseguradas y 6 % de la población con seguro: El Diario; La Patilla (julio de 2026).</li>
+    <li>Lluvias de agosto de 2026: EFE vía Primicias.</li>
+    <li>Reglamento de seguros paramétricos: SBS del Perú, Resolución N.° 02260-2026.</li>
+    <li>MiCRO, microseguros paramétricos en América Latina: Howden.</li>
+  </ul>
+  <div class="pie"><span>Resguardo · AseguraTech26</span><span>9</span></div>
+</section>
+</body>
+</html>
